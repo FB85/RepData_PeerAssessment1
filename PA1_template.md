@@ -5,7 +5,7 @@ date: "26/09/2021"
 output: html_document
 ---
 
-```{r setup, include=FALSE}
+```{r_setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
@@ -14,7 +14,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 The data is loaded using the read.csv function and stored in an object called "data"
 
-```{r loading, echo=TRUE}
+```{r_loading, echo=TRUE}
 data <- read.csv("activity.csv")
 ```
 
@@ -22,13 +22,13 @@ data <- read.csv("activity.csv")
 
 Calculation of the total number of steps taken each day:
 
-```{r calculation steps, echo=TRUE}
+```{r_calculation_steps, echo=TRUE}
 Stepsbydate <- aggregate(steps ~ date, data, sum)
 ```
 
 Histogram representing the distribution:
 
-```{r plot steps, echo=TRUE}
+```{r_plot_steps, echo=TRUE}
 library(ggplot2)
 p <- ggplot(Stepsbydate, aes(date, steps)) + geom_col(colour="white") + scale_x_discrete(guide = guide_axis(angle = 90))
 p + labs(title="Total steps per day")
@@ -36,7 +36,7 @@ p + labs(title="Total steps per day")
 
 Calculate and report the mean and median of the total number of steps taken per day
 
-```{r mean median, echo=TRUE}
+```{r_mean_median, echo=TRUE}
 mean(Stepsbydate$steps)
 median(Stepsbydate$steps)
 ```
@@ -45,14 +45,14 @@ median(Stepsbydate$steps)
 
 Make a time series plot (i.e. \color{red}{\verb|type = "l"|}type = "l") of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all days (y-axis)
 
-```{r time series plot, echo=TRUE}
+```{r_time_series_plot, echo=TRUE}
 Stepsbyinterval <- aggregate(steps ~ interval, data, mean)
 plot(Stepsbyinterval$interval, Stepsbyinterval$steps, type = "l", xlab = "Time", ylab = "Steps", main = "Average daily activity")
 ```
 
 Which 5-minute interval, on average across all the days in the dataset, contains the maximum number of steps?
 
-```{r find max interval, echo=TRUE}
+```{r_find_max_interval, echo=TRUE}
 ### find the max value
 max(Stepsbyinterval$steps)
 ### find the interval with that value
@@ -63,7 +63,7 @@ subset(Stepsbyinterval, steps > 206)
 
 Calculate and report the total number of missing values in the dataset (i.e. the total number of rows with \color{red}{\verb|NA|}NAs)
 
-```{r nas, echo=TRUE}
+```{r_nas, echo=TRUE}
 sum(is.na(data))
 ```
 
@@ -72,7 +72,7 @@ I'll use the mean of the same interval
 
 Create a new dataset that is equal to the original dataset but with the missing data filled in.
 
-```{r imputing nas, echo=TRUE}
+```{r_imputing_nas, echo=TRUE}
 ### calculate mean by interval in a new dataframe
 dfmeaninterval <- aggregate(data$steps, list(data$interval), na.rm = TRUE, mean)
 names(dfmeaninterval) = c("interval","mean")
@@ -86,7 +86,7 @@ datawithmean$newsteps <- ifelse(is.na(datawithmean$steps), datawithmean$mean, da
 
 Make a histogram of the total number of steps taken each day and Calculate and report the mean and median total number of steps taken per day. Do these values differ from the estimates from the first part of the assignment? What is the impact of imputing missing data on the estimates of the total daily number of steps?
 
-```{r new histogram, echo=TRUE}
+```{r_new_histogram, echo=TRUE}
 ### calculate total step by interval of the column with nas imputed
 Stepsbydate2 <- aggregate(newsteps ~ date, datawithmean, sum)
 
@@ -97,7 +97,7 @@ p + labs(title="Total steps per day")
 
 Calculate new mean and median
 
-```{r new mean median, echo=TRUE}
+```{r_new_mean_median, echo=TRUE}
 mean(Stepsbydate2$newsteps)
 median(Stepsbydate2$newsteps)
 ```
@@ -108,7 +108,7 @@ Those numbers almost don't differ from the original numbers omitting the missing
 
 Create a new factor variable in the dataset with two levels – “weekday” and “weekend” indicating whether a given date is a weekday or weekend day.
 
-```{r new factor, echo=TRUE}
+```{r_new_factor, echo=TRUE}
 ### convert date to date format
 datawithmean$date <- as.Date(as.character(datawithmean$date), format = "%Y-%m-%d")
 
@@ -121,7 +121,7 @@ datawithmean$day <- ifelse(datawithmean$weekday == "samedi" | datawithmean$weekd
 
 Make a panel plot containing a time series plot (i.e. \color{red}{\verb|type = "l"|}type = "l") of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all weekday days or weekend days (y-axis). 
 
-```{r panel plot, echo=TRUE}
+```{r_panel_plot, echo=TRUE}
 ### calculate total steps by interval + type of day
 Stepsbyinterval2 <- aggregate(newsteps ~ interval + day, datawithmean, mean)
 
