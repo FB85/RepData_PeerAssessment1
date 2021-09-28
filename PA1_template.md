@@ -146,3 +146,4 @@ Stepsbyinterval2 <- aggregate(newsteps ~ interval + day, datawithmean, mean)
 ggplot(Stepsbyinterval2, aes(interval, newsteps), facets = day ~ .,) + geom_line() + facet_grid(rows = vars(day))
 ```
 
+![Test Image 2](https://github.com/FB85/RepData_PeerAssessment1/blob/master/plot4.png)
