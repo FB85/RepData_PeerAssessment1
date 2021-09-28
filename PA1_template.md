@@ -48,7 +48,7 @@ median(Stepsbydate$steps)
 
 ## What is the average daily activity pattern?
 
-Make a time series plot (i.e. \color{red}{\verb|type = "l"|}type = "l") of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all days (y-axis)
+Make a time series plot (i.e. type = "l") of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all days (y-axis)
 
 ```{r_time_series_plot, echo=TRUE}
 Stepsbyinterval <- aggregate(steps ~ interval, data, mean)
