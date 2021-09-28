@@ -40,10 +40,10 @@ Calculate and report the mean and median of the total number of steps taken per 
 
 ```{r_mean_median, echo=TRUE}
 mean(Stepsbydate$steps)
-## [1] 10766.19
+[1] 10766.19
 
 median(Stepsbydate$steps)
-## [1] 10765
+[1] 10765
 ```
 
 ## What is the average daily activity pattern?
