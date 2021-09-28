@@ -113,7 +113,10 @@ Calculate new mean and median
 
 ```{r_new_mean_median, echo=TRUE}
 mean(Stepsbydate2$newsteps)
+[1] 10766.19
+
 median(Stepsbydate2$newsteps)
+[1] 10766.19
 ```
 
 Those numbers almost don't differ from the original numbers omitting the missing values, this method does not have a big impact on them.
