@@ -62,8 +62,12 @@ Which 5-minute interval, on average across all the days in the dataset, contains
 ```{r_find_max_interval, echo=TRUE}
 ### find the max value
 max(Stepsbyinterval$steps)
+## [1] 206.1698
+
 ### find the interval with that value
 subset(Stepsbyinterval, steps > 206)
+##     interval    steps
+## 104      835 206.1698
 ```
 
 ## Imputing missing values
@@ -72,6 +76,7 @@ Calculate and report the total number of missing values in the dataset (i.e. the
 
 ```{r_nas, echo=TRUE}
 sum(is.na(data))
+## [1] 2304
 ```
 
 Devise a strategy for filling in all of the missing values in the dataset:
