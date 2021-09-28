@@ -33,6 +33,7 @@ library(ggplot2)
 p <- ggplot(Stepsbydate, aes(date, steps)) + geom_col(colour="white") + scale_x_discrete(guide = guide_axis(angle = 90))
 p + labs(title="Total steps per day")
 ```
+
 ![Test Image 1](https://github.com/FB85/RepData_PeerAssessment1/blob/master/plot1.png)
 
 Calculate and report the mean and median of the total number of steps taken per day
@@ -53,6 +54,8 @@ Make a time series plot (i.e. \color{red}{\verb|type = "l"|}type = "l") of the 5
 Stepsbyinterval <- aggregate(steps ~ interval, data, mean)
 plot(Stepsbyinterval$interval, Stepsbyinterval$steps, type = "l", xlab = "Time", ylab = "Steps", main = "Average daily activity")
 ```
+
+![Test Image 2](https://github.com/FB85/RepData_PeerAssessment1/blob/master/plot2.png)
 
 Which 5-minute interval, on average across all the days in the dataset, contains the maximum number of steps?
 
