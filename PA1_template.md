@@ -107,6 +107,8 @@ p <- ggplot(Stepsbydate2, aes(date, newsteps)) + geom_col(colour="white") + scal
 p + labs(title="Total steps per day")
 ```
 
+![Test Image 2](https://github.com/FB85/RepData_PeerAssessment1/blob/master/plot3.png)
+
 Calculate new mean and median
 
 ```{r_new_mean_median, echo=TRUE}
